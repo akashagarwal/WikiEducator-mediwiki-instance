@@ -1,0 +1,29 @@
+/**
+ * CSS for the Education Program MediaWiki extension.
+ * @see https://www.mediawiki.org/wiki/Extension:Education_Program
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ */
+
+div.ep-timeline-group {
+    /* border: 1px solid black; */
+    min-width: 450px;
+    width: 42%;
+}
+
+div.ep-event-item {
+    background-color: #EDEFF5;
+    border-bottom: 1px solid #D2D9E6;
+    margin-top: 1px;
+    margin-left: 25px;
+    padding: 5px 5px 4px;
+}
+
+span.ep-event-ago {
+    color: #797979;
+}
+
+h2.ep-course-title {
+    color: #0645AD;
+}

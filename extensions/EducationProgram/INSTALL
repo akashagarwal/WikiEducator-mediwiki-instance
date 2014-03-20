@@ -1,0 +1,150 @@
+These is the install file for the Education Program extension.
+
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Education_Program
+Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/EducationProgram.git;a=blob;f=INSTALL
+
+
+== Requirements ==
+
+Education Program requires:
+
+* MediaWiki 1.23 or above
+* PHP 5.3 or above
+* MySQL
+* Mediawiki CLDR extension
+* Mediawiki Echo extension (for notifications)
+
+== Download ==
+
+Released versions can be downloaded from the extension page on mediawiki.org.
+
+You can also get the latest code directly from git:
+
+ cd extensions
+ git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/EducationProgram.git
+
+To use a specific released version, first list the available tags with:
+
+ cd EducationProgram
+ git tag -l
+
+Then to use a specific tagged version (such as <code>0.2</code>) do:
+
+ git checkout 0.2
+
+== Installation ==
+
+Once you have downloaded the code, place the ''EducationProgram'' directory within your MediaWiki
+'extensions' directory. Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php]] file:
+
+# Education Program
+require_once( "$IP/extensions/EducationProgram/EducationProgram.php" );
+
+== Configuration ==
+
+Configuration of Reviews is done by assigning to $egSettings in your
+[[Manual:LocalSettings.php|LocalSettings.php]] file, AFTER the inclusion of the
+extension. The options are listed below and their default is set in the Education Program settings file:
+https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/EducationProgram.git;a=blob;f=EducationProgram.settings.php
+You should NOT modify the settings file, but can have a look at it to get an idea of
+how to use the settings, in case the below descriptions do not suffice.
+
+{| class="wikitable sortable"
+! Name
+! Type
+! Default
+! Description
+|-
+| enableTopLink
+| boolean
+| true
+| Enabled the link to Special:MyCourses in the menu on the top (next to the link to MyPreferences).
+|-
+| ambassadorCommonsUrl
+| string
+| https://commons.wikimedia.org/wiki/Special:UploadWizard
+| Link to the upload interface for ambassador profile pictures.
+|-
+| citylessCountries
+| array
+| ''see settings file''
+| List of countries for which to not require a city for institutions.
+|-
+| ambassadorImgWidth
+| integer
+| 140
+| Maximum width of ambassador profile images in the ambassador profile lists.
+
+|-
+| ambassadorImgHeight
+| integer
+| 140
+| Maximum height of ambassador profile images in the ambassador profile lists.
+|-
+| recentActivityLimit
+| integer
+| 24 * 60 * 60
+| The length of the time period for which to show activity on Special:StudentActivity.
+|-
+| flagWidth
+| integer
+| 25
+| The maximum width of flag icons on Special:StudentActivity.
+|-
+| flagHeight
+| integer
+| 25
+| The maximum width of flag icons on Special:StudentActivity.
+|-
+| countryFlags
+| array
+| ''see settings file''
+| List of country codes pointing to image names used to figure out which image to use for country flag icons.
+|-
+| fallbackFlag
+| string
+| Nuvola unknown flag.svg
+| A flag image to show for countries that do not have an associated flag set in the countryFlags settings.
+|-
+| courseDescPage
+| string
+| MediaWiki:Course description
+| Name of the page on which the default initial description for courses can be specified.
+|-
+| courseOrgDescPage
+| string
+| $2/$1
+| Name of the page on which the initial description for courses belonging to a specific institution can be specified.
+$1 is replaced by the name of the institution and $2 is replaced by the value of the courseDescPage setting.
+|-
+| useStudentRealNames
+| boolean
+| false
+| If real names should be shown instead of usernames for students in the education interfaces.
+|-
+| timelineDurationLimit
+| integer
+| 2 *24 * 60 *60
+| The length of the time period for which to show activity in the course activity timelines (ie on Special:MyCourses).
+|-
+| timelineCountLimit
+| integer
+| 42
+| Maximum number of items to show in the course activity timelines.
+|-
+| timelineUserLimit
+| integer
+| 3
+| Maximum number of users to list in an event group in course activity timelines.
+|-
+| dykCategory
+| string
+| Wikipedia:Education Program Did You Know
+| The name of the category from which to use pages as content for the did you know box.
+|-
+| dykOrgCategory
+| string
+| $2/$1
+| The name of the category from which to use pages as content for the did you know box for a specific institution.
+$1 is replaced by the name of the institution and $2 is replaced by the value of the dykCategory setting.
+|}
